@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>In-Home Cat Care Specialist | Vancouver, BC</title>
+  <meta name="description" content="Professional, insured in-home cat sitting across Vancouver, BC. With 5+ years of experience and a background in animal care, your cat is in expert hands." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ================================================
+       VARIABLES — tweak colours here
+    ================================================ */
+    :root {
+      --cream:       #F7F5F2;
+      --pink:        #F2DEDA;
+      --pink-border: #E8C8C2;
+      --pink-muted:  #C8A9A5;
+      --charcoal:    #2E2E2E;
+      --muted:       #999;
+      --light:       #aaa;
+      --border:      #DDDBD8;
+      --white:       #ffffff;
+      --radius:      2px;
+    }
+
+    /* ================================================
+       RESET & BASE
+    ================================================ */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      color: var(--charcoal);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* ================================================
+       NAVIGATION
+    ================================================ */
+    nav {
+      background: var(--pink);
+      border-bottom: 0.5px solid var(--pink-border);
+      padding: 1.4rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo {
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: #9A7A77;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--charcoal); }
+    .nav-cta {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      padding: 0.55rem 1.4rem;
+      border: 0.5px solid var(--charcoal);
+      background: transparent;
+      color: var(--charcoal);
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      text-decoration: none;
+    }
+    .nav-cta:hover { background: var(--charcoal); color: var(--pink); }
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .nav-hamburger span { display: block; width: 22px; height: 1px; background: var(--charcoal); }
+    .nav-mobile {
+      display: none;
+      flex-direction: column;
+      background: var(--pink);
+      border-bottom: 0.5px solid var(--pink-border);
+      padding: 1.2rem 3rem 1.6rem;
+      gap: 1.1rem;
+    }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a {
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: #9A7A77;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+    }
+    .nav-mobile .nav-cta { align-self: flex-start; margin-top: 0.4rem; }
+
+    /* ================================================
+       HERO BANNER
+       PHOTO TIP: Replace the background-image URL with
+       your own photo: url('your-banner-photo.jpg')
+       Recommended size: 1600 x 900px, JPG or WebP
+    ================================================ */
+    .hero-banner {
+      width: 100%;
+      height: 450px;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      background-color: #C8BDB5;
+      background-image: url('https://images.unsplash.com/photo-1548802673-380ab8ebc7b7?w=1600&q=80');
+      background-size: cover;
+      background-position: center;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.05) 100%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 3rem 3rem;
+      max-width: 860px;
+    }
+    .hero-eyebrow {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 1rem;
+    }
+    .hero-h1 {
+      font-size: 3rem;
+      font-weight: 300;
+      line-height: 1.13;
+      color: #fff;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+      margin-bottom: 1.4rem;
+      letter-spacing: -0.03em;
+    }
+    .hero-h1 strong { font-weight: 600; }
+    .hero-sub {
+      font-size: 0.92rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.8;
+      max-width: 460px;
+      margin-bottom: 2rem;
+    }
+    .hero-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+    .btn-light {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      padding: 0.75rem 2rem;
+      background: #fff;
+      color: var(--charcoal);
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .btn-light:hover { background: var(--pink); }
+    .btn-ghost-white {
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      color: rgba(255,255,255,0.75);
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* ================================================
+       TRUST BAR
+    ================================================ */
+    .trust-bar {
+      border-bottom: 0.5px solid var(--border);
+      padding: 1.4rem 3rem;
+      display: flex;
+      gap: 2.4rem;
+      flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.73rem;
+      font-weight: 400;
+      color: var(--light);
+      letter-spacing: 0.05em;
+    }
+    .trust-dot { width: 4px; height: 4px; border-radius: 50%; background: #CCC; flex-shrink: 0; }
+
+    /* ================================================
+       SHARED SECTION STYLES
+    ================================================ */
+    .section-wrap { max-width: 1100px; margin: 0 auto; padding: 5.5rem 3rem; }
+    .section-eyebrow {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--light);
+      margin-bottom: 0.9rem;
+    }
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      color: var(--charcoal);
+      text-shadow: 1px 2px 12px rgba(0,0,0,0.08);
+      margin-bottom: 0.6rem;
+      line-height: 1.15;
+    }
+    .section-title strong { font-weight: 600; }
+    .section-sub {
+      font-size: 0.92rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 480px;
+      margin-bottom: 3.5rem;
+    }
+
+    /* ================================================
+       SERVICES
+    ================================================ */
+    .services-bg { background: var(--cream); border-top: 0.5px solid var(--border); }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+    .card {
+      background: var(--white);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2.2rem 1.8rem;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.2s;
+    }
+    .card:hover { border-color: #B0A89E; }
+    .card.featured { border-color: var(--pink-muted); }
+    .card-tag {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--pink-muted);
+      margin-bottom: 1.4rem;
+    }
+    .card-name {
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      margin-bottom: 0.6rem;
+      letter-spacing: -0.01em;
+    }
+    .card-desc {
+      font-size: 0.84rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 1.8rem;
+    }
+    .card-divider { height: 0.5px; background: #EBEBEB; margin-bottom: 1.6rem; }
+    .card-price {
+      font-size: 0.88rem;
+      font-weight: 400;
+      color: #888;
+      font-style: italic;
+      margin-bottom: 1.6rem;
+    }
+    .card-includes { list-style: none; display: flex; flex-direction: column; gap: 9px; flex: 1; }
+    .card-includes li {
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: var(--light);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .card-includes li::before {
+      content: '';
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--pink-muted);
+      flex-shrink: 0;
+    }
+    .card-cta { padding-top: 2rem; }
+    .btn-card {
+      width: 100%;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      padding: 0.7rem 1rem;
+      background: transparent;
+      color: var(--charcoal);
+      border: 0.5px solid var(--charcoal);
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      text-decoration: none;
+      display: block;
+      text-align: center;
+      font-family: 'Inter', sans-serif;
+    }
+    .btn-card:hover { background: var(--charcoal); color: var(--cream); }
+    .btn-card.pink { border-color: var(--pink-muted); color: var(--pink-muted); }
+    .btn-card.pink:hover { background: var(--pink-muted); color: #fff; }
+
+    /* ================================================
+       ABOUT
+    ================================================ */
+    .about-bg {
+      background: var(--pink);
+      border-top: 0.5px solid var(--pink-border);
+      border-bottom: 0.5px solid var(--pink-border);
+    }
+    .about-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 5rem; align-items: center; }
+    .about-photo {
+      width: 100%;
+      aspect-ratio: 1;
+      max-width: 280px;
+      border-radius: var(--radius);
+      background: #E8D4D0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border: 0.5px solid var(--pink-border);
+      /*
+        PHOTO TIP: Replace this div with your own headshot:
+        <img src="your-photo.jpg" alt="Your name"
+             style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:2px;" />
+      */
+    }
+    .about-photo-label {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #B0958F;
+    }
+    .about-bio {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: #666;
+      line-height: 1.85;
+      margin-bottom: 2rem;
+    }
+    .about-badges { display: flex; flex-wrap: wrap; gap: 8px; }
+    .badge {
+      font-size: 0.72rem;
+      font-weight: 400;
+      padding: 5px 14px;
+      border-radius: 100px;
+      background: var(--white);
+      border: 0.5px solid var(--pink-border);
+      color: #9A7A77;
+      letter-spacing: 0.03em;
+    }
+
+    /* ================================================
+       GALLERY
+       PHOTO TIP: Replace each .gallery-item contents with:
+       <img src="cat-photo.jpg" alt="Description"
+            style="width:100%;height:100%;object-fit:cover;" />
+    ================================================ */
+    .gallery-bg { background: var(--cream); border-top: 0.5px solid var(--border); }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: 200px 200px;
+      gap: 10px;
+    }
+    .gallery-item {
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: #E8E4E0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 0.5px solid var(--border);
+    }
+    .gallery-item:nth-child(1) { grid-column: span 2; }
+    .gallery-item:nth-child(5) { grid-column: span 2; }
+    .gallery-hint {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #B0A89E;
+    }
+
+    /* ================================================
+       TESTIMONIALS
+    ================================================ */
+    .testimonials-bg {
+      background: var(--pink);
+      border-top: 0.5px solid var(--pink-border);
+      border-bottom: 0.5px solid var(--pink-border);
+    }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+    .testimonial-card {
+      background: var(--white);
+      border: 0.5px solid var(--pink-border);
+      border-radius: var(--radius);
+      padding: 2rem 1.8rem;
+    }
+    .stars { font-size: 0.75rem; color: var(--pink-muted); letter-spacing: 2px; margin-bottom: 1rem; }
+    .testimonial-quote {
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: #666;
+      line-height: 1.8;
+      font-style: italic;
+      margin-bottom: 1.6rem;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-top: 0.5px solid #F0E8E6;
+      padding-top: 1.2rem;
+    }
+    .author-initials {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--pink);
+      border: 0.5px solid var(--pink-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: #9A7A77;
+      flex-shrink: 0;
+    }
+    .author-name { font-size: 0.82rem; font-weight: 500; color: var(--charcoal); }
+    .author-pet { font-size: 0.75rem; font-weight: 300; color: var(--light); }
+
+    /* ================================================
+       CONTACT
+       FORMSPREE SETUP (free, no coding required):
+       1. Go to https://formspree.io and sign up free
+       2. Click "New Form" — you'll receive a URL like:
+          https://formspree.io/f/xxxxxxxx
+       3. Replace YOUR_FORM_ID in the <form action="...">
+          below with your actual ID (the xxxxxxxx part)
+       4. Formspree emails you every submission — done!
+    ================================================ */
+    .contact-bg { background: var(--cream); border-top: 0.5px solid var(--border); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: 5rem; align-items: start; }
+    .contact-info-text {
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 1.4rem;
+    }
+    .contact-link {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      border-bottom: 0.5px solid var(--charcoal);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .contact-link:hover { color: var(--pink-muted); border-color: var(--pink-muted); }
+    .contact-form { display: flex; flex-direction: column; gap: 1.1rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--light);
+    }
+    .form-input, .form-textarea {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: var(--charcoal);
+      background: var(--white);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.75rem 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+    }
+    .form-input:focus, .form-textarea:focus { border-color: var(--pink-muted); }
+    .form-textarea { resize: vertical; min-height: 120px; }
+    .btn-submit {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      padding: 0.85rem 2.4rem;
+      background: var(--charcoal);
+      color: var(--cream);
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      align-self: flex-start;
+      transition: background 0.2s;
+    }
+    .btn-submit:hover { background: #444; }
+    .form-note {
+      font-size: 0.75rem;
+      font-weight: 300;
+      color: var(--light);
+      line-height: 1.7;
+    }
+
+    /* ================================================
+       FOOTER
+    ================================================ */
+    footer {
+      background: var(--charcoal);
+      padding: 3.5rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+    .footer-logo {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+    }
+    .footer-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+    .footer-links a {
+      font-size: 0.75rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.4);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: rgba(255,255,255,0.8); }
+    .footer-copy {
+      font-size: 0.72rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.25);
+      letter-spacing: 0.04em;
+    }
+
+    /* ================================================
+       RESPONSIVE
+    ================================================ */
+    @media (max-width: 900px) {
+      nav { padding: 1.2rem 1.8rem; }
+      .nav-links, .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
+      .nav-mobile { padding: 1.2rem 1.8rem 1.6rem; }
+      .hero-content { padding: 0 1.8rem 2.5rem; }
+      .hero-h1 { font-size: 2.2rem; }
+      .trust-bar { padding: 1.2rem 1.8rem; gap: 1.4rem; }
+      .section-wrap { padding: 4rem 1.8rem; }
+      .section-title { font-size: 1.8rem; }
+      .cards { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about-photo { max-width: 160px; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: auto; }
+      .gallery-item { height: 160px; }
+      .gallery-item:nth-child(1),
+      .gallery-item:nth-child(5) { grid-column: span 1; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .form-row { grid-template-columns: 1fr; }
+      footer { flex-direction: column; align-items: flex-start; padding: 2.5rem 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <a href="#" class="nav-logo">In-Home Cat Care Specialist</a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="https://www.rover.com/sit/danat39765" target="_blank" class="nav-cta">Book via Rover</a>
+    <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="nav-mobile" id="mobileMenu">
+    <a href="#services" class="mobile-link">Services</a>
+    <a href="#gallery" class="mobile-link">Gallery</a>
+    <a href="#about" class="mobile-link">About</a>
+    <a href="#contact" class="mobile-link">Contact</a>
+    <a href="https://www.rover.com/sit/danat39765" target="_blank" class="nav-cta">Book via Rover</a>
+  </div>
+
+  <!-- HERO BANNER -->
+  <div class="hero-banner">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Vancouver, BC &nbsp;·&nbsp; Fully insured</p>
+      <h1 class="hero-h1">Your cat, cared for<br><strong>in the comfort of home.</strong></h1>
+      <p class="hero-sub">Professional, attentive in-home cat sitting across Vancouver. With over five years of experience and a background in animal care, your cat is in expert hands.</p>
+      <div class="hero-actions">
+        <a href="https://www.rover.com/sit/danat39765" target="_blank" class="btn-light">Book via Rover</a>
+        <a href="#services" class="btn-ghost-white">View services</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-item"><span class="trust-dot"></span>5+ years experience</div>
+    <div class="trust-item"><span class="trust-dot"></span>Animal care background</div>
+    <div class="trust-item"><span class="trust-dot"></span>Fully insured</div>
+    <div class="trust-item"><span class="trust-dot"></span>All of Vancouver</div>
+  </div>
+
+  <!-- SERVICES -->
+  <div class="services-bg" id="services">
+    <div class="section-wrap">
+      <p class="section-eyebrow">What I offer</p>
+      <h2 class="section-title">Services tailored to<br><strong>your cat's routine.</strong></h2>
+      <p class="section-sub">Every visit is adapted to your cat's personality, schedule, and needs. Rates available on request.</p>
+      <div class="cards">
+        <div class="card">
+          <p class="card-tag">Drop-in visit</p>
+          <h3 class="card-name">30-Minute Visit</h3>
+          <p class="card-desc">A focused visit to feed, refresh water, and give your cat some dedicated attention.</p>
+          <div class="card-divider"></div>
+          <p class="card-price">Contact for rates</p>
+          <ul class="card-includes">
+            <li>Feeding &amp; fresh water</li>
+            <li>Litter box cleaning</li>
+            <li>Playtime &amp; affection</li>
+            <li>Photo update sent to you</li>
+          </ul>
+          <div class="card-cta"><a href="#contact" class="btn-card">Get in touch</a></div>
+        </div>
+        <div class="card featured">
+          <p class="card-tag">Most requested</p>
+          <h3 class="card-name">Extended Stay</h3>
+          <p class="card-desc">A longer 60-minute visit with extra enrichment, grooming, and quality time.</p>
+          <div class="card-divider"></div>
+          <p class="card-price">Contact for rates</p>
+          <ul class="card-includes">
+            <li>Everything in Drop-in</li>
+            <li>Brushing &amp; grooming</li>
+            <li>Enrichment &amp; play</li>
+            <li>Detailed daily report</li>
+          </ul>
+          <div class="card-cta"><a href="#contact" class="btn-card pink">Get in touch</a></div>
+        </div>
+        <div class="card">
+          <p class="card-tag">Overnight care</p>
+          <h3 class="card-name">Overnight Stay</h3>
+          <p class="card-desc">I stay at your home overnight so your cat is never alone and always comfortable.</p>
+          <div class="card-divider"></div>
+          <p class="card-price">Contact for rates</p>
+          <ul class="card-includes">
+            <li>Evening &amp; morning visits</li>
+            <li>Overnight stay (10pm–7am)</li>
+            <li>All meals included</li>
+            <li>Full daily updates</li>
+          </ul>
+          <div class="card-cta"><a href="#contact" class="btn-card">Get in touch</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <div class="about-bg" id="about">
+    <div class="section-wrap">
+      <div class="about-grid">
+        <div>
+          <div class="about-photo">
+            <!-- PHOTO TIP: Replace this div with your headshot:
+                 <img src="your-photo.jpg" alt="Your name"
+                      style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:2px;" /> -->
+            <svg width="36" height="36" viewBox="0 0 40 40" fill="none" style="opacity:0.3">
+              <rect x="2" y="2" width="36" height="36" rx="3" stroke="#9A7A77" stroke-width="1"/>
+              <circle cx="13" cy="15" r="4" stroke="#9A7A77" stroke-width="1"/>
+              <path d="M2 30l9-9 7 7 5-5 15 13" stroke="#9A7A77" stroke-width="1" stroke-linejoin="round"/>
+            </svg>
+            <p class="about-photo-label">Your photo here</p>
+          </div>
+        </div>
+        <div>
+          <p class="section-eyebrow">About me</p>
+          <h2 class="section-title" style="margin-bottom:1.4rem;">A cat lover<br><strong>you can trust.</strong></h2>
+          <p class="about-bio">With over five years of hands-on experience caring for cats and a professional background in animal care, I bring both expertise and genuine affection to every visit. As a cat owner myself, I understand how much your pet means to you — which is why I treat every cat in my care as if they were my own. I am fully insured, so you can travel with complete confidence knowing your cat is safe, comfortable, and loved.</p>
+          <div class="about-badges">
+            <span class="badge">5+ years experience</span>
+            <span class="badge">Animal care background</span>
+            <span class="badge">Cat owner</span>
+            <span class="badge">Fully insured</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GALLERY -->
+  <div class="gallery-bg" id="gallery">
+    <div class="section-wrap">
+      <p class="section-eyebrow">Happy guests</p>
+      <h2 class="section-title">Meet some of<br><strong>my furry clients.</strong></h2>
+      <p class="section-sub">Every cat has their own personality — here are a few of my favourites.</p>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <!-- Replace with: <img src="cat1.jpg" alt="Cat name" style="width:100%;height:100%;object-fit:cover;" /> -->
+          <svg width="28" height="28" viewBox="0 0 40 40" fill="none" style="opacity:0.25"><rect x="2" y="2" width="36" height="36" rx="3" stroke="#9A7A77" stroke-width="1"/><circle cx="13" cy="15" r="4" stroke="#9A7A77" stroke-width="1"/><path d="M2 30l9-9 7 7 5-5 15 13" stroke="#9A7A77" stroke-width="1" stroke-linejoin="round"/></svg>
+          <p class="gallery-hint">Add photo</p>
+        </div>
+        <div class="gallery-item">
+          <svg width="28" height="28" viewBox="0 0 40 40" fill="none" style="opacity:0.25"><rect x="2" y="2" width="36" height="36" rx="3" stroke="#9A7A77" stroke-width="1"/><circle cx="13" cy="15" r="4" stroke="#9A7A77" stroke-width="1"/><path d="M2 30l9-9 7 7 5-5 15 13" stroke="#9A7A77" stroke-width="1" stroke-linejoin="round"/></svg>
+          <p class="gallery-hint">Add photo</p>
+        </div>
+        <div class="gallery-item">
+          <svg width="28" height="28" viewBox="0 0 40 40" fill="none" style="opacity:0.25"><rect x="2" y="2" width="36" height="36" rx="3" stroke="#9A7A77" stroke-width="1"/><circle cx="13" cy="15" r="4" stroke="#9A7A77" stroke-width="1"/><path d="M2 30l9-9 7 7 5-5 15 13" stroke="#9A7A77" stroke-width="1" stroke-linejoin="round"/></svg>
+          <p class="gallery-hint">Add photo</p>
+        </div>
+        <div class="gallery-item">
+          <svg width="28" height="28" viewBox="0 0 40 40" fill="none" style="opacity:0.25"><rect x="2" y="2" width="36" height="36" rx="3" stroke="#9A7A77" stroke-width="1"/><circle cx="13" cy="15" r="4" stroke="#9A7A77" stroke-width="1"/><path d="M2 30l9-9 7 7 5-5 15 13" stroke="#9A7A77" stroke-width="1" stroke-linejoin="round"/></svg>
+          <p class="gallery-hint">Add photo</p>
+        </div>
+        <div class="gallery-item">
+          <svg width="28" height="28" viewBox="0 0 40 40" fill="none" style="opacity:0.25"><rect x="2" y="2" width="36" height="36" rx="3" stroke="#9A7A77" stroke-width="1"/><circle cx="13" cy="15" r="4" stroke="#9A7A77" stroke-width="1"/><path d="M2 30l9-9 7 7 5-5 15 13" stroke="#9A7A77" stroke-width="1" stroke-linejoin="round"/></svg>
+          <p class="gallery-hint">Add photo</p>
+        </div>
+        <div class="gallery-item">
+          <svg width="28" height="28" viewBox="0 0 40 40" fill="none" style="opacity:0.25"><rect x="2" y="2" width="36" height="36" rx="3" stroke="#9A7A77" stroke-width="1"/><circle cx="13" cy="15" r="4" stroke="#9A7A77" stroke-width="1"/><path d="M2 30l9-9 7 7 5-5 15 13" stroke="#9A7A77" stroke-width="1" stroke-linejoin="round"/></svg>
+          <p class="gallery-hint">Add photo</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <div class="testimonials-bg" id="testimonials">
+    <div class="section-wrap">
+      <p class="section-eyebrow">Kind words</p>
+      <h2 class="section-title">What cat parents<br><strong>have to say.</strong></h2>
+      <p class="section-sub">Built on trust, one purr at a time.</p>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-quote">"I went away for two weeks completely stress-free. My cat was so well looked after — I received daily photos and updates the entire time. Truly exceptional care."</p>
+          <div class="testimonial-author">
+            <div class="author-initials">SL</div>
+            <div>
+              <p class="author-name">Sarah L.</p>
+              <p class="author-pet">Cat parent to Mochi</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-quote">"My two cats are very shy with strangers, but they warmed up immediately. The level of care and attention they received was outstanding. We won't use anyone else."</p>
+          <div class="testimonial-author">
+            <div class="author-initials">JR</div>
+            <div>
+              <p class="author-name">James R.</p>
+              <p class="author-pet">Cat parent to Luna &amp; Stella</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-quote">"Reliable, caring, and so communicative. I always feel confident that my cat is in the absolute best hands. Highly recommend to every cat owner in Vancouver."</p>
+          <div class="testimonial-author">
+            <div class="author-initials">AM</div>
+            <div>
+              <p class="author-name">Aisha M.</p>
+              <p class="author-pet">Cat parent to Noodle</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="contact-bg" id="contact">
+    <div class="section-wrap">
+      <div class="contact-grid">
+        <div>
+          <p class="section-eyebrow">Get in touch</p>
+          <h2 class="section-title" style="font-size:1.8rem;margin-bottom:1.2rem;">Let's talk<br><strong>about your cat.</strong></h2>
+          <p class="contact-info-text">Whether you have questions about my services, want to discuss your cat's needs, or are ready to book, I'd love to hear from you.</p>
+          <p class="contact-info-text">Prefer to book directly?</p>
+          <a href="https://www.rover.com/sit/danat39765" target="_blank" class="contact-link">Book via Rover →</a>
+        </div>
+        <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <!-- FORMSPREE: Replace YOUR_FORM_ID above with your actual Formspree form ID -->
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="name">Your name</label>
+              <input class="form-input" type="text" id="name" name="name" placeholder="Jane Smith" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="email">Email address</label>
+              <input class="form-input" type="email" id="email" name="email" placeholder="jane@email.com" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="cat">Your cat's name &amp; breed (optional)</label>
+            <input class="form-input" type="text" id="cat" name="cat" placeholder="e.g. Mochi, Siamese mix" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="message">Message</label>
+            <textarea class="form-textarea" id="message" name="message" placeholder="Tell me about your cat and what dates you're looking for..." required></textarea>
+          </div>
+          <button type="submit" class="btn-submit">Send message</button>
+          <p class="form-note">I typically respond within 24 hours. You can also book directly through my Rover profile.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-logo">In-Home Cat Care Specialist</span>
+    <ul class="footer-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="https://www.rover.com/sit/danat39765" target="_blank">Rover</a></li>
+    </ul>
+    <span class="footer-copy">© 2025 In-Home Cat Care Specialist · Vancouver, BC</span>
+  </footer>
+
+  <!-- JAVASCRIPT: hamburger menu -->
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    });
+  </script>
+
+</body>
+</html>
